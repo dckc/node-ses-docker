@@ -14,3 +14,7 @@ RUN apt-get -y autoremove
 
 RUN cd /usr/local/src; rm -rf node*
 
+RUN npm install -g ses
+
+# shebang with args doesn't work on linux.
+RUN sed -i '1c\#!/usr/local/bin/node --harmony' /usr/local/lib/node_modules/ses/bin/ses
